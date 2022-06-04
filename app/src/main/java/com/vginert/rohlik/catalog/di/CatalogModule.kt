@@ -1,9 +1,11 @@
 package com.vginert.rohlik.catalog.di
 
+import com.vginert.rohlik.catalog.domain.use_cases.GetCategoriesUseCase
 import com.vginert.rohlik.catalog.presentation.categories.CategoriesViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val catalogModule = module {
-    viewModel { CategoriesViewModel() }
+    factory { GetCategoriesUseCase() }
+    viewModel { CategoriesViewModel(get()) }
 }

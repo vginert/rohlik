@@ -1,4 +1,7 @@
 package com.vginert.rohlik.catalog.presentation.categories
 
-object CategoriesState {
-}
+import com.vginert.rohlik.catalog.presentation.categories.models.CategoryModel
+
+data class CategoriesState(
+    val categories: List<CategoryModel> = emptyList()
+)
