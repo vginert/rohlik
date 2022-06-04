@@ -5,18 +5,20 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import com.vginert.rohlik.catalog.presentation.catalogNavGraph
+import com.vginert.rohlik.shared.presentation.navigation.GlobalNavigation
 
 @Composable
 fun MainNavGraph(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination: String = "Catalog",
+    startDestination: String = GlobalNavigation.CATALOG_ROUTE,
 ) {
     NavHost(
         navController = navController,
         startDestination = startDestination,
         modifier = modifier
     ) {
-        // TODO
+        catalogNavGraph(navController = navController)
     }
 }
