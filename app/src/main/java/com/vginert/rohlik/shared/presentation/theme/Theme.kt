@@ -1,4 +1,4 @@
-package com.vginert.rohlik.presentation.theme
+package com.vginert.rohlik.shared.presentation.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
