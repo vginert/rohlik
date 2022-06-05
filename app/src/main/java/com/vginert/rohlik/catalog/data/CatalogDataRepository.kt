@@ -3,7 +3,9 @@ package com.vginert.rohlik.catalog.data
 import com.vginert.rohlik.catalog.domain.CatalogRepository
 import com.vginert.rohlik.catalog.domain.Category
 import com.vginert.rohlik.catalog.domain.Product
+import com.vginert.rohlik.catalog.domain.ProductDetails
 import com.vginert.rohlik.catalog.domain.exceptions.CategoryNotFoundException
+import com.vginert.rohlik.catalog.domain.exceptions.ProductNotFoundException
 import java.util.*
 
 class CatalogDataRepository : CatalogRepository {
@@ -45,5 +47,11 @@ class CatalogDataRepository : CatalogRepository {
         val category = catalog.keys.find { it.id == categoryId }
             ?: throw CategoryNotFoundException()
         return catalog[category] ?: throw CategoryNotFoundException()
+    }
+
+    override suspend fun getProductDetails(productId: String): ProductDetails {
+        val product = catalog.values.flatten().find { it.id == productId }
+            ?: throw ProductNotFoundException()
+        return ProductDetails(product.id, product.name)
     }
 }
