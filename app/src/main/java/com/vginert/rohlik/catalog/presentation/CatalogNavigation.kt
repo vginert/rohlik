@@ -11,6 +11,7 @@ import com.vginert.rohlik.catalog.presentation.CatalogNavigation.PRODUCTS_ROUTE
 import com.vginert.rohlik.catalog.presentation.CatalogNavigation.PRODUCTS_ROUTE_CATEGORY_ID_KEY
 import com.vginert.rohlik.catalog.presentation.categories.CategoriesNavigator
 import com.vginert.rohlik.catalog.presentation.categories.CategoriesRoute
+import com.vginert.rohlik.catalog.presentation.products.ProductsNavigator
 import com.vginert.rohlik.catalog.presentation.products.ProductsRoute
 import com.vginert.rohlik.shared.presentation.navigation.GlobalNavigation.CATALOG_ROUTE
 
@@ -38,7 +39,10 @@ fun NavGraphBuilder.catalogNavGraph(navController: NavController) {
         ) { backStackEntry ->
             val categoryId = backStackEntry.arguments?.getString(PRODUCTS_ROUTE_CATEGORY_ID_KEY)
                 ?: throw IllegalArgumentException("Category id is mandatory in products screen")
-            ProductsRoute(categoryId = categoryId)
+            ProductsRoute(
+                categoryId = categoryId,
+                navigator = ProductsNavigator(navController)
+            )
         }
     }
 }
