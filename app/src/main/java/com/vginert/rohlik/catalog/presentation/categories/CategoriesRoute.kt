@@ -13,7 +13,7 @@ fun CategoriesRoute(
     val uiState by viewModel.uiState.collectAsState()
 
     CategoriesScreen(
-        uiSate = uiState,
+        uiState = uiState,
         onCategoryClick = { categoryId -> navigator.goToProductsScreen(categoryId) }
     )
 }

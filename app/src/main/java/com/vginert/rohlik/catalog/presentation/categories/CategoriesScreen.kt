@@ -12,11 +12,11 @@ import java.util.*
 
 @Composable
 fun CategoriesScreen(
-    uiSate: CategoriesState = CategoriesState(),
+    uiState: CategoriesState = CategoriesState(),
     onCategoryClick: (id: String) -> Unit = {}
 ) {
     LazyColumn {
-        uiSate.categories.forEach { category ->
+        uiState.categories.forEach { category ->
             item(key = category.id) {
                 CategoryRow(
                     modifier = Modifier.fillMaxWidth(),
@@ -39,7 +39,7 @@ private fun CategoriesScreenPreview() {
     )
     RohlikTheme {
         CategoriesScreen(
-            uiSate = CategoriesState(
+            uiState = CategoriesState(
                 categories = categories
             )
         )
