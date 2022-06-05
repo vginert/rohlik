@@ -5,6 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import com.vginert.rohlik.cart.presentation.cartNavGraph
 import com.vginert.rohlik.catalog.presentation.catalogNavGraph
 import com.vginert.rohlik.shared.presentation.navigation.GlobalNavigation
 
@@ -20,5 +21,6 @@ fun MainNavGraph(
         modifier = modifier
     ) {
         catalogNavGraph(navController = navController)
+        cartNavGraph(navController = navController)
     }
 }

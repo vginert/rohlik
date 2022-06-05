@@ -1,6 +1,7 @@
 package com.vginert.rohlik
 
 import android.app.Application
+import com.vginert.rohlik.cart.di.cartModule
 import com.vginert.rohlik.catalog.di.catalogModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.KoinApplication
@@ -18,6 +19,7 @@ class RohlikApplication : Application() {
             androidContext(this@RohlikApplication)
             modules(
                 catalogModule,
+                cartModule,
             )
         }
 
