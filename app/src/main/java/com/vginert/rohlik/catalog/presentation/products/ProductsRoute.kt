@@ -13,8 +13,9 @@ fun ProductsRoute(
     viewModel: ProductsViewModel = getViewModel { parametersOf(categoryId) }
 ) {
     val uiState by viewModel.uiState.collectAsState()
-    
+
     ProductsScreen(
-        uiState = uiState
+        uiState = uiState,
+        onProductClick = { productId -> navigator.goToProductDetails(productId) }
     )
 }
