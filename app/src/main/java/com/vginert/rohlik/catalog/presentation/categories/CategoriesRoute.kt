@@ -7,11 +7,13 @@ import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun CategoriesRoute(
+    navigator: CategoriesNavigator,
     viewModel: CategoriesViewModel = getViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
     CategoriesScreen(
-        uiSate = uiState
+        uiSate = uiState,
+        onCategoryClick = { categoryId -> navigator.goToProductsScreen(categoryId) }
     )
 }
