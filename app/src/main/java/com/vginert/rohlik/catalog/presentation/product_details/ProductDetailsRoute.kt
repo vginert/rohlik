@@ -1,11 +1,19 @@
 package com.vginert.rohlik.catalog.presentation.product_details
 
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import org.koin.androidx.compose.getViewModel
+import org.koin.core.parameter.parametersOf
 
 @Composable
 fun ProductDetailsRoute(
-    productId: String
+    productId: String,
+    viewModel: ProductDetailsViewModel = getViewModel { parametersOf(productId) }
 ) {
-    Text(text = productId)
+    val uiState by viewModel.uiState.collectAsState()
+
+    ProductDetailsScreen(
+        uiState = uiState
+    )
 }
