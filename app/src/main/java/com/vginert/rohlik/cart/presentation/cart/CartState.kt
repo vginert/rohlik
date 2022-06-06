@@ -1,4 +1,7 @@
 package com.vginert.rohlik.cart.presentation.cart
 
-object CartState {
-}
+import com.vginert.rohlik.cart.presentation.cart.models.CartModel
+
+data class CartState(
+    val cart: CartModel = CartModel.empty()
+)

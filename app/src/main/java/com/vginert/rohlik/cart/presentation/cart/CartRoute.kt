@@ -12,6 +12,7 @@ fun CartRoute(
     val uiState by viewModel.uiState.collectAsState()
 
     CartScreen(
-        uiState = uiState
+        uiState = uiState,
+        onCartItemRemoveClick = viewModel::onCartItemRemoveClick
     )
 }
