@@ -18,6 +18,8 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
+
+        buildConfigField "String", "GROCERY_API_URL", "\"https://raw.githubusercontent.com/vginert/sample-data/master/grocery/\""
     }
 
     buildTypes {

@@ -6,4 +6,5 @@ import com.squareup.moshi.JsonClass
 data class CategoryDTO(
     val id: String,
     val name: String,
+    val image_url: String,
 )

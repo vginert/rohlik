@@ -2,7 +2,6 @@ package com.vginert.rohlik.catalog.di
 
 import com.vginert.rohlik.catalog.data.CatalogDataRepository
 import com.vginert.rohlik.catalog.data.net.NetCatalogDataSource
-import com.vginert.rohlik.catalog.data.net.api.MockRohlikCatalogApi
 import com.vginert.rohlik.catalog.data.net.api.RohlikCatalogApi
 import com.vginert.rohlik.catalog.domain.CatalogRepository
 import com.vginert.rohlik.catalog.domain.use_cases.GetCategoriesUseCase
@@ -13,9 +12,10 @@ import com.vginert.rohlik.catalog.presentation.product_details.ProductDetailsVie
 import com.vginert.rohlik.catalog.presentation.products.ProductsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
+import retrofit2.Retrofit
 
 val catalogModule = module {
-    factory<RohlikCatalogApi> { MockRohlikCatalogApi() }
+    factory { get<Retrofit>().create(RohlikCatalogApi::class.java) }
     factory { NetCatalogDataSource(get()) }
     single<CatalogRepository> { CatalogDataRepository(get()) }
     factory { GetCategoriesUseCase(get()) }

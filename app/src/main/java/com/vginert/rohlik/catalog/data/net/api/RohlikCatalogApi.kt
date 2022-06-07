@@ -5,10 +5,10 @@ import retrofit2.http.Path
 
 interface RohlikCatalogApi {
 
-    @GET("TODO")
+    @GET("category.json")
     suspend fun getCategories(): List<CategoryDTO>
 
-    @GET("TODO/{categoryId}")
+    @GET("category/{categoryId}.json")
     suspend fun getProducts(@Path("categoryId") categoryId: String): List<ProductDTO>
 
     @GET("TODO/{productId}")
