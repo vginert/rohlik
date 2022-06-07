@@ -1,26 +1,40 @@
+@file:OptIn(ExperimentalFoundationApi::class)
+
 package com.vginert.rohlik.catalog.presentation.products
 
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.GridCells
+import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.vginert.rohlik.catalog.presentation.products.components.ProductRow
+import androidx.compose.ui.unit.dp
+import com.vginert.rohlik.catalog.presentation.products.components.ProductItem
 import com.vginert.rohlik.shared.presentation.theme.RohlikTheme
+import com.vginert.rohlik.shared.presentation.theme.Spacing
 
 @Composable
 fun ProductsScreen(
     uiState: ProductsState = ProductsState(),
     onProductClick: (id: String) -> Unit = {}
 ) {
-    LazyColumn {
+    LazyVerticalGrid(
+        cells = GridCells.Adaptive(minSize = 200.dp),
+        contentPadding = PaddingValues(all = Spacing.S)
+    ) {
         uiState.products.forEach { product ->
-            item(key = product.id) {
-                ProductRow(
-                    modifier = Modifier.fillMaxWidth(),
-                    product = product,
-                    onClick = onProductClick
-                )
+            item {
+                Box(modifier = Modifier.padding(Spacing.S)) {
+                    ProductItem(
+                        modifier = Modifier.fillMaxWidth(),
+                        product = product,
+                        onClick = onProductClick
+                    )
+                }
             }
         }
     }

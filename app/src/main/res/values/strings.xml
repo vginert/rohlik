@@ -2,4 +2,5 @@
     <string name="app_name">Rohlik</string>
     <string name="generic_error">Something went wrong.</string>
     <string name="categories_title">Categories</string>
+    <string name="add_to_cart_button">Add</string>
 </resources>

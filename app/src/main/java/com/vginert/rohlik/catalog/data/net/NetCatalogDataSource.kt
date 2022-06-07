@@ -7,6 +7,7 @@ import com.vginert.rohlik.catalog.data.net.api.RohlikCatalogApi
 import com.vginert.rohlik.catalog.domain.Category
 import com.vginert.rohlik.catalog.domain.Product
 import com.vginert.rohlik.catalog.domain.ProductDetails
+import com.vginert.rohlik.shared.data.api.models.asDomain
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -35,6 +36,8 @@ class NetCatalogDataSource(
     private fun ProductDTO.asDomain() = Product(
         id = id,
         name = name,
+        price = price.asDomain(),
+        imageUrl = image_url,
     )
 
     private fun ProductDetailsDTO.asDomain() = ProductDetails(
