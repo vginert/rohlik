@@ -22,7 +22,7 @@ import java.util.*
 fun CategoriesScreen(
     uiState: CategoriesState = CategoriesState(),
     scaffoldState: ScaffoldState = rememberScaffoldState(),
-    onCategoryClick: (id: String) -> Unit = {},
+    onCategoryClick: (category: CategoryModel) -> Unit = {},
     onGenericErrorDismissed: () -> Unit = {},
 ) {
     Scaffold(

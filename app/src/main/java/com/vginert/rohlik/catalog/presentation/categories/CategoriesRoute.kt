@@ -18,7 +18,7 @@ fun CategoriesRoute(
     CategoriesScreen(
         uiState = uiState,
         scaffoldState = scaffoldState,
-        onCategoryClick = navigator::goToProductsScreen,
+        onCategoryClick = { navigator.goToProductsScreen(it.id, it.name) },
         onGenericErrorDismissed = viewModel::onGenericErrorDismissed,
     )
 }

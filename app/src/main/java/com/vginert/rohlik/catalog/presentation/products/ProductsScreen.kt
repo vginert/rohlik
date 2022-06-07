@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyVerticalGrid
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -20,20 +21,26 @@ import com.vginert.rohlik.shared.presentation.theme.Spacing
 @Composable
 fun ProductsScreen(
     uiState: ProductsState = ProductsState(),
+    scaffoldState: ScaffoldState = rememberScaffoldState(),
     onProductClick: (id: String) -> Unit = {}
 ) {
-    LazyVerticalGrid(
-        cells = GridCells.Adaptive(minSize = 200.dp),
-        contentPadding = PaddingValues(all = Spacing.S)
+    Scaffold(
+        topBar = { TopAppBar(title = { Text(text = uiState.title) }) },
+        scaffoldState = scaffoldState,
     ) {
-        uiState.products.forEach { product ->
-            item {
-                Box(modifier = Modifier.padding(Spacing.S)) {
-                    ProductItem(
-                        modifier = Modifier.fillMaxWidth(),
-                        product = product,
-                        onClick = onProductClick
-                    )
+        LazyVerticalGrid(
+            cells = GridCells.Adaptive(minSize = 200.dp),
+            contentPadding = PaddingValues(all = Spacing.S)
+        ) {
+            uiState.products.forEach { product ->
+                item {
+                    Box(modifier = Modifier.padding(Spacing.S)) {
+                        ProductItem(
+                            modifier = Modifier.fillMaxWidth(),
+                            product = product,
+                            onClick = onProductClick
+                        )
+                    }
                 }
             }
         }

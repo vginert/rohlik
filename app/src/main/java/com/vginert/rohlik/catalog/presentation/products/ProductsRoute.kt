@@ -9,8 +9,9 @@ import org.koin.core.parameter.parametersOf
 @Composable
 fun ProductsRoute(
     categoryId: String,
+    categoryName: String,
     navigator: ProductsNavigator,
-    viewModel: ProductsViewModel = getViewModel { parametersOf(categoryId) }
+    viewModel: ProductsViewModel = getViewModel { parametersOf(categoryId, categoryName) }
 ) {
     val uiState by viewModel.uiState.collectAsState()
 

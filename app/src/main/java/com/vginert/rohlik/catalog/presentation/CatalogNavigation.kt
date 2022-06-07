@@ -9,6 +9,7 @@ import androidx.navigation.navArgument
 import com.vginert.rohlik.catalog.presentation.CatalogNavigation.CATEGORIES_ROUTE
 import com.vginert.rohlik.catalog.presentation.CatalogNavigation.PRODUCTS_ROUTE
 import com.vginert.rohlik.catalog.presentation.CatalogNavigation.PRODUCTS_ROUTE_CATEGORY_ID_KEY
+import com.vginert.rohlik.catalog.presentation.CatalogNavigation.PRODUCTS_ROUTE_CATEGORY_NAME_KEY
 import com.vginert.rohlik.catalog.presentation.CatalogNavigation.PRODUCT_DETAILS_ROUTE
 import com.vginert.rohlik.catalog.presentation.CatalogNavigation.PRODUCT_DETAILS_ROUTE_PRODUCT_ID_KEY
 import com.vginert.rohlik.catalog.presentation.categories.CategoriesNavigator
@@ -22,6 +23,7 @@ object CatalogNavigation {
     const val CATEGORIES_ROUTE = "catalog_categories"
     const val PRODUCTS_ROUTE = "catalog_products"
     const val PRODUCTS_ROUTE_CATEGORY_ID_KEY = "categoryId"
+    const val PRODUCTS_ROUTE_CATEGORY_NAME_KEY = "categoryName"
     const val PRODUCT_DETAILS_ROUTE = "catalog_product_details"
     const val PRODUCT_DETAILS_ROUTE_PRODUCT_ID_KEY = "productId"
 }
@@ -35,17 +37,23 @@ fun NavGraphBuilder.catalogNavGraph(navController: NavController) {
             CategoriesRoute(navigator = CategoriesNavigator(navController))
         }
         composable(
-            route = "$PRODUCTS_ROUTE/{${PRODUCTS_ROUTE_CATEGORY_ID_KEY}}",
+            route = "$PRODUCTS_ROUTE/{${PRODUCTS_ROUTE_CATEGORY_ID_KEY}}/{${PRODUCTS_ROUTE_CATEGORY_NAME_KEY}}",
             arguments = listOf(
                 navArgument(PRODUCTS_ROUTE_CATEGORY_ID_KEY) {
+                    type = NavType.StringType
+                },
+                navArgument(PRODUCTS_ROUTE_CATEGORY_NAME_KEY) {
                     type = NavType.StringType
                 }
             )
         ) { backStackEntry ->
             val categoryId = backStackEntry.arguments?.getString(PRODUCTS_ROUTE_CATEGORY_ID_KEY)
                 ?: throw IllegalArgumentException("Category id is mandatory in products screen")
+            val categoryName = backStackEntry.arguments?.getString(PRODUCTS_ROUTE_CATEGORY_NAME_KEY)
+                ?: throw IllegalArgumentException("Category name is mandatory in products screen")
             ProductsRoute(
                 categoryId = categoryId,
+                categoryName = categoryName,
                 navigator = ProductsNavigator(navController)
             )
         }

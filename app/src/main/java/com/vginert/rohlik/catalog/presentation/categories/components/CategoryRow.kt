@@ -23,14 +23,14 @@ import java.util.*
 fun CategoryRow(
     modifier: Modifier = Modifier,
     category: CategoryModel,
-    onClick: (categoryId: String) -> Unit = {}
+    onClick: (category: CategoryModel) -> Unit = {}
 ) {
     Box(
         modifier = modifier
             .fillMaxWidth()
             .clickable(
                 role = Role.Button,
-                onClick = { onClick(category.id) }
+                onClick = { onClick(category) }
             )
             .padding(horizontal = Spacing.M, vertical = Spacing.M)) {
         Row(

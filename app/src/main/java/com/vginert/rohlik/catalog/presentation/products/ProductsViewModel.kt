@@ -13,10 +13,11 @@ import kotlinx.coroutines.launch
 
 class ProductsViewModel(
     private val categoryId: String,
+    categoryName: String,
     private val getProductsFromCategoryUseCase: GetProductsFromCategoryUseCase,
 ) : ViewModel() {
 
-    private val _uiState = MutableStateFlow(ProductsState())
+    private val _uiState = MutableStateFlow(ProductsState(title = categoryName))
     val uiState: StateFlow<ProductsState> = _uiState
 
     init {
