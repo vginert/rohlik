@@ -32,10 +32,10 @@ fun CategoriesScreen(
 @Composable
 private fun CategoriesScreenPreview() {
     val categories = listOf(
-        CategoryModel(UUID.randomUUID().toString(), "Fruits"),
-        CategoryModel(UUID.randomUUID().toString(), "Drinks"),
-        CategoryModel(UUID.randomUUID().toString(), "Meal"),
-        CategoryModel(UUID.randomUUID().toString(), "Fish"),
+        CategoryModel(UUID.randomUUID().toString(), "Fruits", ""),
+        CategoryModel(UUID.randomUUID().toString(), "Drinks", ""),
+        CategoryModel(UUID.randomUUID().toString(), "Meal", ""),
+        CategoryModel(UUID.randomUUID().toString(), "Fish", ""),
     )
     RohlikTheme {
         CategoriesScreen(

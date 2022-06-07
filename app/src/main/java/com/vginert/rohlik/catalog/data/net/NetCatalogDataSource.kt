@@ -29,6 +29,7 @@ class NetCatalogDataSource(
     private fun CategoryDTO.asDomain() = Category(
         id = id,
         name = name,
+        imageUrl = image_url,
     )
 
     private fun ProductDTO.asDomain() = Product(
