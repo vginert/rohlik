@@ -23,9 +23,11 @@ class CategoriesViewModel(
     }
 
     private fun fetchCategories() = viewModelScope.launch {
+        _uiState.update { state -> state.copy(isLoadingContent = true) }
         executeUseCase { getCategoriesUseCase() }
             .onSuccess(::onFetchCategoriesSuccess)
             .onFailure(::onFetchCategoriesFail)
+        _uiState.update { state -> state.copy(isLoadingContent = false) }
     }
 
     private fun onFetchCategoriesSuccess(categories: List<Category>) {
