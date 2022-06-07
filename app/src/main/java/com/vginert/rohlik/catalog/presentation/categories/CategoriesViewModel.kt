@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.vginert.rohlik.catalog.domain.Category
 import com.vginert.rohlik.catalog.domain.use_cases.GetCategoriesUseCase
+import com.vginert.rohlik.catalog.presentation.categories.CategoriesState.CategoriesError.UnknownError
 import com.vginert.rohlik.catalog.presentation.categories.models.asPresentation
 import com.vginert.rohlik.shared.core.coroutines.executeUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -22,6 +23,11 @@ class CategoriesViewModel(
         fetchCategories()
     }
 
+    fun onGenericErrorDismissed() {
+        _uiState.update { it.copy(error = null) }
+    }
+
+
     private fun fetchCategories() = viewModelScope.launch {
         _uiState.update { state -> state.copy(isLoadingContent = true) }
         executeUseCase { getCategoriesUseCase() }
@@ -37,6 +43,6 @@ class CategoriesViewModel(
     }
 
     private fun onFetchCategoriesFail(error: Throwable) {
-        TODO()
+        _uiState.update { state -> state.copy(error = UnknownError) }
     }
 }

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Rohlik</string>
+    <string name="generic_error">Something went wrong.</string>
     <string name="categories_title">Categories</string>
 </resources>
