@@ -13,6 +13,7 @@ fun CartRoute(
 
     CartScreen(
         uiState = uiState,
-        onCartItemRemoveClick = viewModel::onCartItemRemoveClick
+        onCartItemRemoveClick = viewModel::onCartItemRemoveClick,
+        onClearCartClick = viewModel::onClearCartClick
     )
 }

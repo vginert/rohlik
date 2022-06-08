@@ -1,13 +1,13 @@
 package com.vginert.rohlik.shared.domain.use_cases
 
 import com.vginert.rohlik.shared.domain.CartProvider
-import com.vginert.rohlik.shared.domain.Product
 
-class AddProductToCartUseCase(
+class ClearCartUseCase(
     private val cartProvider: CartProvider
 ) {
-    suspend operator fun invoke(product: Product) {
-        val cart = cartProvider.getCart().addProduct(product)
+
+    suspend operator fun invoke() {
+        val cart = cartProvider.getCart().clear()
         cartProvider.setCart(cart)
     }
 }

@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.vginert.rohlik.cart.presentation.cart.models.CartModel
 import com.vginert.rohlik.cart.presentation.cart.models.asPresentation
+import com.vginert.rohlik.shared.core.coroutines.executeUseCase
+import com.vginert.rohlik.shared.domain.use_cases.ClearCartUseCase
 import com.vginert.rohlik.shared.domain.use_cases.SubscribeToCartUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -11,7 +13,8 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class CartViewModel(
-    private val subscribeToCartUseCase: SubscribeToCartUseCase
+    private val subscribeToCartUseCase: SubscribeToCartUseCase,
+    private val clearCartUseCase: ClearCartUseCase,
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(CartState())
@@ -25,11 +28,20 @@ class CartViewModel(
         // TODO
     }
 
+    fun onClearCartClick() = viewModelScope.launch {
+        executeUseCase { clearCartUseCase() }
+            .onFailure(::onClearCartFail)
+    }
+
     private fun subscribeToCartChanges() = viewModelScope.launch {
         subscribeToCartUseCase().collect { cart ->
             _uiState.update { state ->
                 state.copy(cart = cart.asPresentation())
             }
         }
+    }
+
+    private fun onClearCartFail(error: Throwable) {
+        TODO()
     }
 }

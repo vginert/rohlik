@@ -1,32 +1,40 @@
 package com.vginert.rohlik.shared.domain
 
-class Cart {
-
-    private val _items: HashMap<Product, Int> = hashMapOf()
+data class Cart(
     val items: List<Item>
-        get() = _items.map { Item(it.key, it.value) }
+) {
+
+    companion object {
+        fun empty() = Cart(emptyList())
+    }
 
     data class Item(
         val product: Product,
         val amount: Int,
     )
 
-    fun addProduct(product: Product) {
-        _items[product] = _items[product]?.plus(1) ?: 1
+    fun addProduct(product: Product): Cart {
+        val item = items.find { it.product.id == product.id }
+        if (item == null) {
+            val newItem = Item(product, 1)
+            val newItemList = items.toMutableList()
+            newItemList.add(newItem)
+            return this.copy(items = newItemList)
+        }
+
+        val newItem = item.copy(amount = item.amount + 1)
+        val newItemList = items.toMutableList()
+        newItemList[newItemList.indexOf(item)] = newItem
+        return this.copy(items = newItemList)
     }
 
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (javaClass != other?.javaClass) return false
-
-        other as Cart
-
-        if (items != other.items) return false
-
-        return true
+    fun removeProduct(product: Product): Cart {
+        val newItemList = items.toMutableList()
+        newItemList.removeAll { it.product.id == product.id }
+        return this.copy(items = newItemList)
     }
 
-    override fun hashCode(): Int {
-        return items.hashCode()
+    fun clear(): Cart {
+        return this.copy(items = emptyList())
     }
 }

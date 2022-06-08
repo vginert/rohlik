@@ -13,5 +13,5 @@ val cartModule = module {
     single { MemoryCartDataSource() }
     factory { LocalCartDataSource() }
     factory { CartDataRepository(get(), get()) }.bind(CartRepository::class)
-    viewModel { CartViewModel(get()) }
+    viewModel { CartViewModel(get(), get()) }
 }

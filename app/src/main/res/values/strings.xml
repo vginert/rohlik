@@ -4,4 +4,6 @@
     <string name="categories_title">Categories</string>
     <string name="add_to_cart_button">Add</string>
     <string name="go_to_cart_button">Open cart</string>
+    <string name="cart_title">Cart</string>
+    <string name="clear_cart_button">Clear cart</string>
 </resources>
