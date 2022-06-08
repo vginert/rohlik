@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+import "product.proto";
+
+option java_package = "com.vginert.rohlik.cart.data.local.datastore";
+option java_multiple_files = true;
+
+message CartDTO {
+  repeated Item items = 1;
+
+  message Item {
+    ProductDTO product = 1;
+    int32 amount = 2;
+  }
+}

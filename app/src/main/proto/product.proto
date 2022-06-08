@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option java_package = "com.vginert.rohlik.shared.data.local";
+option java_multiple_files = true;
+
+message ProductDTO {
+  string id = 1;
+  string name = 2;
+  PriceDTO price = 3;
+  string image_url = 4;
+}
+
+message PriceDTO {
+  double amount = 1;
+  string currency = 2;
+}

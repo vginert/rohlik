@@ -11,7 +11,7 @@ import org.koin.dsl.module
 
 val cartModule = module {
     single { MemoryCartDataSource() }
-    factory { LocalCartDataSource() }
+    factory { LocalCartDataSource(get()) }
     factory { CartDataRepository(get(), get()) }.bind(CartRepository::class)
     viewModel { CartViewModel(get(), get(), get()) }
 }
