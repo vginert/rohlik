@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,9 +26,22 @@ fun CategoriesScreen(
     scaffoldState: ScaffoldState = rememberScaffoldState(),
     onCategoryClick: (category: CategoryModel) -> Unit = {},
     onGenericErrorDismissed: () -> Unit = {},
+    onGoToCartClick: () -> Unit = {},
 ) {
     Scaffold(
-        topBar = { TopAppBar(title = { Text(text = stringResource(id = R.string.categories_title)) }) },
+        topBar = {
+            TopAppBar(
+                title = { Text(text = stringResource(id = R.string.categories_title)) },
+                actions = {
+                    IconButton(onClick = onGoToCartClick) {
+                        Icon(
+                            Icons.Filled.ShoppingCart,
+                            contentDescription = stringResource(id = R.string.go_to_cart_button)
+                        )
+                    }
+                }
+            )
+        },
         scaffoldState = scaffoldState,
     ) {
         if (uiState.isLoadingContent) {

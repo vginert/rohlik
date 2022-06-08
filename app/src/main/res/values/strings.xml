@@ -3,4 +3,5 @@
     <string name="generic_error">Something went wrong.</string>
     <string name="categories_title">Categories</string>
     <string name="add_to_cart_button">Add</string>
+    <string name="go_to_cart_button">Open cart</string>
 </resources>

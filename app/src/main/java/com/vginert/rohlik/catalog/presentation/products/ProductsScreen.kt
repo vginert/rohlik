@@ -10,10 +10,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.vginert.rohlik.R
 import com.vginert.rohlik.catalog.presentation.products.components.ProductItem
 import com.vginert.rohlik.shared.presentation.models.ProductModel
 import com.vginert.rohlik.shared.presentation.theme.RohlikTheme
@@ -25,9 +29,22 @@ fun ProductsScreen(
     scaffoldState: ScaffoldState = rememberScaffoldState(),
     onProductClick: (product: ProductModel) -> Unit = {},
     onAddToCartClick: (product: ProductModel) -> Unit = {},
+    onGoToCartClick: () -> Unit = {},
 ) {
     Scaffold(
-        topBar = { TopAppBar(title = { Text(text = uiState.title) }) },
+        topBar = {
+            TopAppBar(
+                title = { Text(text = uiState.title) },
+                actions = {
+                    IconButton(onClick = onGoToCartClick) {
+                        Icon(
+                            Icons.Filled.ShoppingCart,
+                            contentDescription = stringResource(id = R.string.go_to_cart_button)
+                        )
+                    }
+                }
+            )
+        },
         scaffoldState = scaffoldState,
     ) {
         LazyVerticalGrid(
