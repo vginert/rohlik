@@ -1,8 +1,7 @@
 package com.vginert.rohlik.cart.domain
 
-import kotlinx.coroutines.flow.Flow
+import com.vginert.rohlik.shared.domain.Cart
 
 interface CartRepository {
-    val cartFlow: Flow<Cart>
     suspend fun setCart(cart: Cart)
 }

@@ -1,7 +1,6 @@
-package com.vginert.rohlik.catalog.data.net.api
+package com.vginert.rohlik.shared.data.api
 
 import com.squareup.moshi.JsonClass
-import com.vginert.rohlik.shared.data.api.models.PriceDTO
 
 @JsonClass(generateAdapter = true)
 data class ProductDTO(

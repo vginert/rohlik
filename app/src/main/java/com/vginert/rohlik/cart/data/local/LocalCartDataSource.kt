@@ -1,6 +1,6 @@
 package com.vginert.rohlik.cart.data.local
 
-import com.vginert.rohlik.cart.domain.Cart
+import com.vginert.rohlik.shared.domain.Cart
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.util.*

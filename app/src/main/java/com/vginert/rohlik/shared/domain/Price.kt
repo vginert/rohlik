@@ -1,4 +1,4 @@
-package com.vginert.rohlik.shared.domain.models
+package com.vginert.rohlik.shared.domain
 
 import java.util.*
 

@@ -1,6 +1,4 @@
-package com.vginert.rohlik.catalog.domain
-
-import com.vginert.rohlik.shared.domain.models.Price
+package com.vginert.rohlik.shared.domain
 
 data class Product(
     val id: String,

@@ -1,6 +1,6 @@
 package com.vginert.rohlik.cart.data.memory
 
-import com.vginert.rohlik.cart.domain.Cart
+import com.vginert.rohlik.shared.domain.Cart
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 

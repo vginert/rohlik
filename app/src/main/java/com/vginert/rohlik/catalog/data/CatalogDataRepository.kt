@@ -3,7 +3,7 @@ package com.vginert.rohlik.catalog.data
 import com.vginert.rohlik.catalog.data.net.NetCatalogDataSource
 import com.vginert.rohlik.catalog.domain.CatalogRepository
 import com.vginert.rohlik.catalog.domain.Category
-import com.vginert.rohlik.catalog.domain.Product
+import com.vginert.rohlik.shared.domain.Product
 import com.vginert.rohlik.catalog.domain.ProductDetails
 
 class CatalogDataRepository(

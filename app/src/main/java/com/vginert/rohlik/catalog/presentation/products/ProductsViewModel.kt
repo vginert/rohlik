@@ -2,10 +2,10 @@ package com.vginert.rohlik.catalog.presentation.products
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.vginert.rohlik.catalog.domain.Product
 import com.vginert.rohlik.catalog.domain.use_cases.GetProductsFromCategoryUseCase
-import com.vginert.rohlik.catalog.presentation.products.models.asPresentation
 import com.vginert.rohlik.shared.core.coroutines.executeUseCase
+import com.vginert.rohlik.shared.domain.Product
+import com.vginert.rohlik.shared.presentation.models.asPresentation
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update

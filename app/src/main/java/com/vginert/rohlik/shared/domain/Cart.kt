@@ -1,4 +1,4 @@
-package com.vginert.rohlik.cart.domain
+package com.vginert.rohlik.shared.domain
 
 data class Cart(
     val items: List<Item>

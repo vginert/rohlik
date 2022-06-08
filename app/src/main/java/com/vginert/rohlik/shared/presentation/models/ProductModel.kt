@@ -1,8 +1,6 @@
-package com.vginert.rohlik.catalog.presentation.products.models
+package com.vginert.rohlik.shared.presentation.models
 
-import com.vginert.rohlik.catalog.domain.Product
-import com.vginert.rohlik.shared.presentation.models.PriceModel
-import com.vginert.rohlik.shared.presentation.models.asPresentation
+import com.vginert.rohlik.shared.domain.Product
 
 data class ProductModel(
     val id: String,

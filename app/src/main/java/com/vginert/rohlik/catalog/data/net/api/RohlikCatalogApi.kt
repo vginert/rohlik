@@ -1,5 +1,6 @@
 package com.vginert.rohlik.catalog.data.net.api
 
+import com.vginert.rohlik.shared.data.api.ProductDTO
 import retrofit2.http.GET
 import retrofit2.http.Path
 

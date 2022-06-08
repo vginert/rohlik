@@ -1,6 +1,6 @@
 package com.vginert.rohlik.catalog.presentation.products
 
-import com.vginert.rohlik.catalog.presentation.products.models.ProductModel
+import com.vginert.rohlik.shared.presentation.models.ProductModel
 
 data class ProductsState(
     val title: String = "",

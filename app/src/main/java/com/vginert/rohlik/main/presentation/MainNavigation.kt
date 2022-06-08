@@ -13,7 +13,7 @@ import com.vginert.rohlik.shared.presentation.navigation.GlobalNavigation
 fun MainNavGraph(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination: String = GlobalNavigation.CATALOG_ROUTE,
+    startDestination: String = GlobalNavigation.CART_ROUTE,
 ) {
     NavHost(
         navController = navController,

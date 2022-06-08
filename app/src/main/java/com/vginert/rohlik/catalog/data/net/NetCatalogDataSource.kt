@@ -1,13 +1,13 @@
 package com.vginert.rohlik.catalog.data.net
 
 import com.vginert.rohlik.catalog.data.net.api.CategoryDTO
-import com.vginert.rohlik.catalog.data.net.api.ProductDTO
+import com.vginert.rohlik.shared.data.api.ProductDTO
 import com.vginert.rohlik.catalog.data.net.api.ProductDetailsDTO
 import com.vginert.rohlik.catalog.data.net.api.RohlikCatalogApi
 import com.vginert.rohlik.catalog.domain.Category
-import com.vginert.rohlik.catalog.domain.Product
+import com.vginert.rohlik.shared.domain.Product
 import com.vginert.rohlik.catalog.domain.ProductDetails
-import com.vginert.rohlik.shared.data.api.models.asDomain
+import com.vginert.rohlik.shared.data.api.asDomain
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

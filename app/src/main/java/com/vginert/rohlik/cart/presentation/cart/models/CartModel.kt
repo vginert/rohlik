@@ -1,6 +1,6 @@
 package com.vginert.rohlik.cart.presentation.cart.models
 
-import com.vginert.rohlik.cart.domain.Cart
+import com.vginert.rohlik.shared.domain.Cart
 
 class CartModel(
     val items: List<Item>

@@ -15,8 +15,8 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImagePainter
 import coil.compose.rememberAsyncImagePainter
 import com.vginert.rohlik.R
-import com.vginert.rohlik.catalog.presentation.products.models.ProductModel
 import com.vginert.rohlik.shared.presentation.models.PriceModel
+import com.vginert.rohlik.shared.presentation.models.ProductModel
 import com.vginert.rohlik.shared.presentation.theme.Elevation
 import com.vginert.rohlik.shared.presentation.theme.RohlikTheme
 import com.vginert.rohlik.shared.presentation.theme.Spacing

@@ -2,7 +2,7 @@ package com.vginert.rohlik.shared.presentation.models
 
 import android.icu.text.NumberFormat
 import android.os.Build
-import com.vginert.rohlik.shared.domain.models.Price
+import com.vginert.rohlik.shared.domain.Price
 import java.text.DecimalFormat
 import java.util.*
 
