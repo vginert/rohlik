@@ -6,16 +6,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.vginert.rohlik.cart.presentation.cart.components.CartItemRow
+import com.vginert.rohlik.cart.presentation.cart.models.CartModel
 import com.vginert.rohlik.shared.presentation.theme.RohlikTheme
 
 @Composable
 fun CartScreen(
     uiState: CartState = CartState(),
-    onCartItemRemoveClick: (cartItemId: String) -> Unit = {}
+    onCartItemRemoveClick: (cartItem: CartModel.Item) -> Unit = {}
 ) {
     LazyColumn {
         uiState.cart.items.forEach { cartItem ->
-            item(key = cartItem.id) {
+            item(key = cartItem.product.id) {
                 CartItemRow(
                     modifier = Modifier.fillMaxWidth(),
                     cartItem = cartItem,

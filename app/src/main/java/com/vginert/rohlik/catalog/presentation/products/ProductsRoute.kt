@@ -17,6 +17,7 @@ fun ProductsRoute(
 
     ProductsScreen(
         uiState = uiState,
-        onProductClick = { productId -> navigator.goToProductDetails(productId) }
+        onProductClick = { productId -> navigator.goToProductDetails(productId.id) },
+        onAddToCartClick = { productId -> viewModel.onAddToCartClick(productId) },
     )
 }

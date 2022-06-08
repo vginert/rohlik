@@ -12,4 +12,8 @@ class MemoryCartDataSource {
     fun setCart(cart: Cart) {
         _cartFlow.value = cart
     }
+
+    fun getCart(): Cart? {
+        return _cartFlow.value
+    }
 }

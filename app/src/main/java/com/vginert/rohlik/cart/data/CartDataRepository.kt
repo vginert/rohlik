@@ -16,7 +16,11 @@ class CartDataRepository(
 ) : CartRepository, CartProvider {
 
     override val cartFlow: Flow<Cart> = memoryDataSource.cartFlow.map {
-        it ?: getCartFromLocalAndSyncToMemory() ?: Cart.empty()
+        it ?: getCartFromLocalAndSyncToMemory() ?: Cart()
+    }
+
+    override suspend fun getCart(): Cart {
+        return memoryDataSource.getCart() ?: getCartFromLocalAndSyncToMemory() ?: Cart()
     }
 
     override suspend fun setCart(cart: Cart) {

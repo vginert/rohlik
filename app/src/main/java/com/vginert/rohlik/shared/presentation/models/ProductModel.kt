@@ -15,3 +15,10 @@ fun Product.asPresentation() = ProductModel(
     price = price.asPresentation(),
     imageUrl = imageUrl,
 )
+
+fun ProductModel.asDomain() = Product(
+    id = id,
+    name = name,
+    price = price.asDomain(),
+    imageUrl = imageUrl,
+)

@@ -22,6 +22,8 @@ val catalogModule = module {
     factory { GetProductsFromCategoryUseCase(get()) }
     factory { GetProductDetailsUseCase(get()) }
     viewModel { CategoriesViewModel(get()) }
-    viewModel { (categoryId: String, categoryName: String) -> ProductsViewModel(categoryId, categoryName, get()) }
+    viewModel { (categoryId: String, categoryName: String) ->
+        ProductsViewModel(categoryId, categoryName, get(), get())
+    }
     viewModel { ProductDetailsViewModel(get(), get()) }
 }

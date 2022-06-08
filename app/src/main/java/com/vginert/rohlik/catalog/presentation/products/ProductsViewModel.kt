@@ -5,6 +5,9 @@ import androidx.lifecycle.viewModelScope
 import com.vginert.rohlik.catalog.domain.use_cases.GetProductsFromCategoryUseCase
 import com.vginert.rohlik.shared.core.coroutines.executeUseCase
 import com.vginert.rohlik.shared.domain.Product
+import com.vginert.rohlik.shared.domain.use_cases.AddProductToCartUseCase
+import com.vginert.rohlik.shared.presentation.models.ProductModel
+import com.vginert.rohlik.shared.presentation.models.asDomain
 import com.vginert.rohlik.shared.presentation.models.asPresentation
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -15,6 +18,7 @@ class ProductsViewModel(
     private val categoryId: String,
     categoryName: String,
     private val getProductsFromCategoryUseCase: GetProductsFromCategoryUseCase,
+    private val addProductToCartUseCase: AddProductToCartUseCase,
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(ProductsState(title = categoryName))
@@ -22,6 +26,11 @@ class ProductsViewModel(
 
     init {
         fetchProducts()
+    }
+
+    fun onAddToCartClick(product: ProductModel) = viewModelScope.launch {
+        executeUseCase { addProductToCartUseCase(product.asDomain()) }
+            .onFailure(::addProductToCartFail)
     }
 
     private fun fetchProducts() = viewModelScope.launch {
@@ -37,6 +46,10 @@ class ProductsViewModel(
     }
 
     private fun onFetchProductsFail(error: Throwable) {
+        TODO()
+    }
+
+    private fun addProductToCartFail(error: Throwable) {
         TODO()
     }
 }

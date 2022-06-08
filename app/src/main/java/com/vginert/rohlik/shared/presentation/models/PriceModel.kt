@@ -34,3 +34,8 @@ fun Price.asPresentation() = PriceModel(
     amount = amount,
     currency = currency
 )
+
+fun PriceModel.asDomain() = Price(
+    amount = amount,
+    currency = currency
+)

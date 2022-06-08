@@ -2,6 +2,7 @@ package com.vginert.rohlik.cart.presentation.cart
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.vginert.rohlik.cart.presentation.cart.models.CartModel
 import com.vginert.rohlik.cart.presentation.cart.models.asPresentation
 import com.vginert.rohlik.shared.domain.use_cases.SubscribeToCartUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,7 +21,7 @@ class CartViewModel(
         subscribeToCartChanges()
     }
 
-    fun onCartItemRemoveClick(itemId: String) {
+    fun onCartItemRemoveClick(item: CartModel.Item) {
         // TODO
     }
 

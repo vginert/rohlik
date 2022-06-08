@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.vginert.rohlik.catalog.presentation.products.components.ProductItem
+import com.vginert.rohlik.shared.presentation.models.ProductModel
 import com.vginert.rohlik.shared.presentation.theme.RohlikTheme
 import com.vginert.rohlik.shared.presentation.theme.Spacing
 
@@ -22,7 +23,8 @@ import com.vginert.rohlik.shared.presentation.theme.Spacing
 fun ProductsScreen(
     uiState: ProductsState = ProductsState(),
     scaffoldState: ScaffoldState = rememberScaffoldState(),
-    onProductClick: (id: String) -> Unit = {}
+    onProductClick: (product: ProductModel) -> Unit = {},
+    onAddToCartClick: (product: ProductModel) -> Unit = {},
 ) {
     Scaffold(
         topBar = { TopAppBar(title = { Text(text = uiState.title) }) },
@@ -38,7 +40,8 @@ fun ProductsScreen(
                         ProductItem(
                             modifier = Modifier.fillMaxWidth(),
                             product = product,
-                            onClick = onProductClick
+                            onClick = onProductClick,
+                            onAddToCartClick = onAddToCartClick,
                         )
                     }
                 }

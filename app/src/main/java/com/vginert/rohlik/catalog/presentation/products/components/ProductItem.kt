@@ -26,8 +26,8 @@ import java.util.*
 fun ProductItem(
     modifier: Modifier = Modifier,
     product: ProductModel,
-    onClick: (productId: String) -> Unit = {},
-    onAddToCartClick: (productId: String) -> Unit = {}
+    onClick: (product: ProductModel) -> Unit = {},
+    onAddToCartClick: (product: ProductModel) -> Unit = {}
 ) {
     val imagePlaceholder = painterResource(id = R.drawable.ic_product_placeholder)
     val imagePainter = rememberAsyncImagePainter(
@@ -47,7 +47,7 @@ fun ProductItem(
             modifier = modifier
                 .clickable(
                     role = Role.Button,
-                    onClick = { onClick(product.id) }
+                    onClick = { onClick(product) }
                 )
                 .padding(Spacing.M)
         ) {
@@ -69,7 +69,7 @@ fun ProductItem(
             Spacer(modifier = Modifier.height(Spacing.S))
             Button(
                 modifier = Modifier.fillMaxWidth(),
-                onClick = { onAddToCartClick(product.id) }
+                onClick = { onAddToCartClick(product) }
             ) {
                 Text(text = stringResource(id = R.string.add_to_cart_button))
             }

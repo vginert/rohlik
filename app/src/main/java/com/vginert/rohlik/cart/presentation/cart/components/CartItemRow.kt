@@ -14,16 +14,16 @@ import com.vginert.rohlik.shared.presentation.theme.Spacing
 fun CartItemRow(
     modifier: Modifier = Modifier,
     cartItem: CartModel.Item,
-    onRemoveClick: (cartItemId: String) -> Unit = {}
+    onRemoveClick: (cartItem: CartModel.Item) -> Unit = {}
 ) {
     Row(
         modifier = modifier
             .clickable(
                 role = Role.Button,
-                onClick = { onRemoveClick(cartItem.id) }
+                onClick = { onRemoveClick(cartItem) }
             )
             .padding(horizontal = Spacing.M, vertical = Spacing.S)
     ) {
-        Text(text = cartItem.name)
+        Text(text = cartItem.product.name)
     }
 }

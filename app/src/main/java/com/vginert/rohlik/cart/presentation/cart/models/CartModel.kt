@@ -1,6 +1,8 @@
 package com.vginert.rohlik.cart.presentation.cart.models
 
 import com.vginert.rohlik.shared.domain.Cart
+import com.vginert.rohlik.shared.presentation.models.ProductModel
+import com.vginert.rohlik.shared.presentation.models.asPresentation
 
 class CartModel(
     val items: List<Item>
@@ -13,8 +15,8 @@ class CartModel(
     }
 
     data class Item(
-        val id: String,
-        val name: String,
+        val product: ProductModel,
+        val amount: Int,
     )
 }
 
@@ -23,6 +25,6 @@ fun Cart.asPresentation() = CartModel(
 )
 
 fun Cart.Item.asPresentation() = CartModel.Item(
-    id = id,
-    name = name
+    product = product.asPresentation(),
+    amount = amount
 )

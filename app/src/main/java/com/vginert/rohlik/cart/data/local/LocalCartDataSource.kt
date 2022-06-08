@@ -1,26 +1,22 @@
 package com.vginert.rohlik.cart.data.local
 
+import android.util.Log
 import com.vginert.rohlik.shared.domain.Cart
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.util.*
 
 class LocalCartDataSource {
 
-    private var cart = Cart(
-        items = listOf(
-            Cart.Item(UUID.randomUUID().toString(), "Fish"),
-            Cart.Item(UUID.randomUUID().toString(), "Meat"),
-            Cart.Item(UUID.randomUUID().toString(), "Drinks"),
-            Cart.Item(UUID.randomUUID().toString(), "Fruit"),
-        )
-    )
+    private var cart: Cart? = null
 
     suspend fun getCart(): Cart? {
         return withContext(Dispatchers.IO) { cart }
     }
 
     suspend fun setCart(cart: Cart) {
-        withContext(Dispatchers.IO) { this@LocalCartDataSource.cart = cart }
+        withContext(Dispatchers.IO) {
+            Log.d("CART", cart.items.toString())
+            this@LocalCartDataSource.cart = cart
+        }
     }
 }
