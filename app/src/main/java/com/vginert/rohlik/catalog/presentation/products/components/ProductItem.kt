@@ -1,20 +1,19 @@
 package com.vginert.rohlik.catalog.presentation.products.components
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.material.Button
+import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImagePainter
-import coil.compose.rememberAsyncImagePainter
 import com.vginert.rohlik.R
+import com.vginert.rohlik.shared.presentation.compose.ProductImage
 import com.vginert.rohlik.shared.presentation.models.PriceModel
 import com.vginert.rohlik.shared.presentation.models.ProductModel
 import com.vginert.rohlik.shared.presentation.theme.Elevation
@@ -29,17 +28,6 @@ fun ProductItem(
     onClick: (product: ProductModel) -> Unit = {},
     onAddToCartClick: (product: ProductModel) -> Unit = {}
 ) {
-    val imagePlaceholder = painterResource(id = R.drawable.ic_product_placeholder)
-    val imagePainter = rememberAsyncImagePainter(
-        model = product.imageUrl,
-        placeholder = imagePlaceholder,
-        error = imagePlaceholder
-    )
-    val imageColorFilter = if (imagePainter.state !is AsyncImagePainter.State.Success) {
-        ColorFilter.tint(LocalContentColor.current.copy(alpha = LocalContentAlpha.current))
-    } else {
-        null
-    }
     Card(
         elevation = Elevation.S
     ) {
@@ -51,13 +39,11 @@ fun ProductItem(
                 )
                 .padding(Spacing.M)
         ) {
-            Image(
+            ProductImage(
                 modifier = modifier
                     .fillMaxWidth()
                     .aspectRatio(1f),
-                painter = imagePainter,
-                colorFilter = imageColorFilter,
-                contentDescription = null
+                imageUrl = product.imageUrl
             )
             Spacer(modifier = Modifier.height(Spacing.M))
             Text(

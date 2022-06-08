@@ -6,7 +6,9 @@ import com.vginert.rohlik.cart.presentation.cart.models.CartModel
 import com.vginert.rohlik.cart.presentation.cart.models.asPresentation
 import com.vginert.rohlik.shared.core.coroutines.executeUseCase
 import com.vginert.rohlik.shared.domain.use_cases.ClearCartUseCase
+import com.vginert.rohlik.shared.domain.use_cases.RemoveProductFromCartUseCase
 import com.vginert.rohlik.shared.domain.use_cases.SubscribeToCartUseCase
+import com.vginert.rohlik.shared.presentation.models.asDomain
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
@@ -14,6 +16,7 @@ import kotlinx.coroutines.launch
 
 class CartViewModel(
     private val subscribeToCartUseCase: SubscribeToCartUseCase,
+    private val removeProductFromCartUseCase: RemoveProductFromCartUseCase,
     private val clearCartUseCase: ClearCartUseCase,
 ) : ViewModel() {
 
@@ -24,8 +27,9 @@ class CartViewModel(
         subscribeToCartChanges()
     }
 
-    fun onCartItemRemoveClick(item: CartModel.Item) {
-        // TODO
+    fun onCartItemRemoveClick(item: CartModel.Item) = viewModelScope.launch {
+        executeUseCase { removeProductFromCartUseCase(item.product.asDomain()) }
+            .onFailure(::onRemoveProductFromCartFail)
     }
 
     fun onClearCartClick() = viewModelScope.launch {
@@ -42,6 +46,10 @@ class CartViewModel(
     }
 
     private fun onClearCartFail(error: Throwable) {
+        TODO()
+    }
+
+    private fun onRemoveProductFromCartFail(error: Throwable) {
         TODO()
     }
 }
