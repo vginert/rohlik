@@ -3,6 +3,7 @@
     <string name="generic_error">Something went wrong.</string>
     <string name="categories_title">Categories</string>
     <string name="category_not_found">Category not found!</string>
+    <string name="product_not_found">Product not found!</string>
     <string name="add_to_cart_button">Add</string>
     <string name="go_to_cart_button">Open cart</string>
     <string name="cart_title">Cart</string>
