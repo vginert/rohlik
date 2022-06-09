@@ -2,6 +2,7 @@ package com.vginert.rohlik.catalog.presentation.products
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.vginert.rohlik.catalog.domain.exceptions.CategoryNotFoundException
 import com.vginert.rohlik.catalog.domain.use_cases.GetProductsFromCategoryUseCase
 import com.vginert.rohlik.shared.core.coroutines.executeUseCase
 import com.vginert.rohlik.shared.domain.Product
@@ -33,10 +34,16 @@ class ProductsViewModel(
             .onFailure(::addProductToCartFail)
     }
 
+    fun onGenericErrorDismissed() {
+        _uiState.update { state -> state.copy(showGenericError = false) }
+    }
+
     private fun fetchProducts() = viewModelScope.launch {
+        _uiState.update { state -> state.copy(showContentNotFound = false, isLoadingContent = true) }
         executeUseCase { getProductsFromCategoryUseCase(categoryId) }
             .onSuccess(::onFetchProductsSuccess)
             .onFailure(::onFetchProductsFail)
+        _uiState.update { state -> state.copy(isLoadingContent = false) }
     }
 
     private fun onFetchProductsSuccess(products: List<Product>) {
@@ -46,10 +53,13 @@ class ProductsViewModel(
     }
 
     private fun onFetchProductsFail(error: Throwable) {
-        TODO()
+        when (error) {
+            is CategoryNotFoundException -> _uiState.update { state -> state.copy(showContentNotFound = true) }
+            else -> _uiState.update { state -> state.copy(showGenericError = true) }
+        }
     }
 
     private fun addProductToCartFail(error: Throwable) {
-        TODO()
+        _uiState.update { state -> state.copy(showGenericError = true) }
     }
 }

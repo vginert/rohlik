@@ -12,6 +12,6 @@ interface RohlikCatalogApi {
     @GET("category/{categoryId}.json")
     suspend fun getProducts(@Path("categoryId") categoryId: String): List<ProductDTO>
 
-    @GET("TODO/{productId}")
+    @GET("product/{productId}.json")
     suspend fun getProductDetails(@Path("productId") productId: String): ProductDetailsDTO
 }

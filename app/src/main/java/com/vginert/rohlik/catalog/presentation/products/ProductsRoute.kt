@@ -19,6 +19,7 @@ fun ProductsRoute(
         uiState = uiState,
         onProductClick = { productId -> navigator.goToProductDetails(productId.id) },
         onAddToCartClick = { productId -> viewModel.onAddToCartClick(productId) },
-        onGoToCartClick = { navigator.goToCart() }
+        onGoToCartClick = navigator::goToCart,
+        onGenericErrorDismissed = viewModel::onGenericErrorDismissed
     )
 }

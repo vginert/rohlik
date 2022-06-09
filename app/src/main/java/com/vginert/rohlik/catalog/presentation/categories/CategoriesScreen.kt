@@ -44,14 +44,12 @@ fun CategoriesScreen(
         },
         scaffoldState = scaffoldState,
     ) {
-        if (uiState.isLoadingContent) {
-            Box(
+        Box(
+            modifier = Modifier.fillMaxSize()
+        ) {
+            LazyColumn(
                 modifier = Modifier.fillMaxSize()
             ) {
-                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
-            }
-        } else {
-            LazyColumn {
                 uiState.categories.forEach { category ->
                     item(key = category.id) {
                         CategoryRow(
@@ -61,6 +59,10 @@ fun CategoriesScreen(
                         )
                     }
                 }
+            }
+
+            if (uiState.isLoadingContent) {
+                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
             }
         }
     }
